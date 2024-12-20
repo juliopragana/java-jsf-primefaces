@@ -8,4 +8,10 @@ version="3.0">
         <converter-id>pessoaConverter</converter-id>
         <converter-class>com.app.jum.converter.PessoaConverter</converter-class>
     </converter>
+    <application>
+		<message-bundle>
+			com.app.jum.resources.Messages
+		</message-bundle>
+	</application>
+    
 </faces-config>

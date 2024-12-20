@@ -6,12 +6,15 @@ import java.util.List;
 import com.app.jum.enums.TipoLancamento;
 import com.app.jum.models.Lancamento;
 import com.app.jum.models.Pessoa;
+import com.app.jum.repository.Lancamentos;
+import com.app.jum.repository.Lancamentos;
 import com.app.jum.repository.Pessoas;
 import com.app.jum.service.CadastroLancamentos;
 import com.app.jum.service.NegocioException;
 
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.AjaxBehaviorEvent;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -21,35 +24,47 @@ import jakarta.inject.Named;
 public class CadastroLancamentoBean implements Serializable {
 
 	private static final long serialVersionUID = -2942962279064588837L;
-	
+
 	@Inject
 	private CadastroLancamentos cadastro;
-	
+
 	@Inject
 	private Pessoas pessoas;
 	
+	@Inject
+	private Lancamentos lancamentos;
+
 	private Lancamento lancamento = new Lancamento();
 	private List<Pessoa> todasPessoas;
-	
+
 	public void prepararCadastro() {
 		this.todasPessoas = pessoas.todas();
 	}
-	
+
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		
+
 		try {
 			this.cadastro.salvar(lancamento);
 			this.lancamento = new Lancamento();
-			context.addMessage(null, new FacesMessage(
-					"Lançamento salvo com sucesso!"));
-						
+			context.addMessage(null, new FacesMessage("Lançamento salvo com sucesso!"));
+
 		} catch (NegocioException e) {
 			FacesMessage mensagem = new FacesMessage(e.getMessage());
 			mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
 			context.addMessage(null, mensagem);
-		}	
-		
+		}
+
+	}
+
+	public void dataVencimentoAlterada(AjaxBehaviorEvent event) {
+		if (this.lancamento.getDataPagamento() == null) {
+			this.lancamento.setDataPagamento(this.lancamento.getDataVencimento());
+		}
+	}
+	
+	public List<String> pesquisarDescricoes(String descricao) {
+		return this.lancamentos.descricoesQueContem(descricao);
 	}
 
 	public Lancamento getLancamento() {
@@ -67,10 +82,9 @@ public class CadastroLancamentoBean implements Serializable {
 	public void setTodasPessoas(List<Pessoa> todasPessoas) {
 		this.todasPessoas = todasPessoas;
 	}
-	
+
 	public TipoLancamento[] getTiposLancamentos() {
 		return TipoLancamento.values();
-	}	
-
+	}
 
 }

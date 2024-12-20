@@ -11,28 +11,36 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 @ApplicationScoped
-public class Lancamentos implements Serializable{
+public class Lancamentos implements Serializable {
 
 	private static final long serialVersionUID = 2295654482096026847L;
-	
+
 	private EntityManager manager;
-	
+
 	// Construtor padrão (sem argumentos)
-    public Lancamentos() {
-    }
-	
+	public Lancamentos() {
+	}
+
 	@Inject
 	public Lancamentos(EntityManager manager) {
 		this.manager = manager;
 	}
-	
-	public List<Lancamento> todos(){
+
+	public List<Lancamento> todos() {
 		TypedQuery<Lancamento> query = manager.createQuery("from Lancamento", Lancamento.class);
 		return query.getResultList();
 	}
-	
+
 	public void adicionar(Lancamento lancamento) {
 		this.manager.persist(lancamento);
+	}
+
+	public List<String> descricoesQueContem(String descricao) {
+		TypedQuery<String> query = manager.createQuery(
+				"select distinct descricao from Lancamento " + "where upper(descricao) like upper(:descricao)",
+				String.class);
+		query.setParameter("descricao", "%" + descricao + "%");
+		return query.getResultList();
 	}
 
 }

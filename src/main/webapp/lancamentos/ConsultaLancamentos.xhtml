@@ -14,14 +14,14 @@
 	<ui:define name="corpo">
 		<h1>Consulta de lançamentos</h1>
 		<h:form id="frm">
-			<h:dataTable value="#{consultaLancamentosBean.lancamentos}"
+			<p:dataTable value="#{consultaLancamentosBean.lancamentos}"
 				var="lancamento" border="1" cellspacing="0" cellpadding="2">
-				<h:column>
+				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Pessoa" />
 					</f:facet>
 					<h:outputText value="#{lancamento.pessoa.nome}" />
-				</h:column>
+				</p:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Descrição" />
@@ -52,7 +52,7 @@
 					</f:facet>
 					<h:outputText value="#{lancamento.dataPagamento}" />
 				</h:column>
-			</h:dataTable>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>
