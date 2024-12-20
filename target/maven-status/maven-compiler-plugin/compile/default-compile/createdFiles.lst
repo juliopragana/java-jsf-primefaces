@@ -1,0 +1,15 @@
+com\app\jum\models\Lancamento.class
+com\app\jum\repository\Lancamentos.class
+com\app\jum\util\JpaUtil.class
+com\app\jum\repository\Pessoas.class
+com\app\jum\util\Transactional.class
+com\app\jum\controller\ConsultaLancamentosBean.class
+com\app\jum\main\CriarLancamentos.class
+com\app\jum\main\CriarTabelas.class
+com\app\jum\service\NegocioException.class
+com\app\jum\service\CadastroLancamentos.class
+com\app\jum\util\EntityManagerProducer.class
+com\app\jum\util\TransactionInterceptor.class
+com\app\jum\enums\TipoLancamento.class
+com\app\jum\controller\OlaBean.class
+com\app\jum\models\Pessoa.class

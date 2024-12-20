@@ -1,0 +1,168 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.app.jum</groupId>
+  <artifactId>Jum</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Define a versão do Java -->
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+	<build>
+		<finalName>JumApp</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+	
+		<!-- JSF API (Jakarta Faces 3.0) -->
+	    <dependency>
+	        <groupId>jakarta.faces</groupId>
+	        <artifactId>jakarta.faces-api</artifactId>
+	        <version>3.0.0</version>
+	    </dependency>
+	
+	    <!-- Implementação de JSF (Jakarta Faces 3.0) -->
+	    <dependency>
+	        <groupId>org.glassfish</groupId>
+	        <artifactId>jakarta.faces</artifactId>
+	        <version>4.0.1</version>
+	    </dependency>
+		
+		 <!-- JPA API (Se você estiver usando JPA) -->
+	    <dependency>
+	        <groupId>jakarta.persistence</groupId>
+	        <artifactId>jakarta.persistence-api</artifactId>
+	        <version>3.1.0</version>
+	    </dependency>
+	    
+	    <!-- Hibernate Core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.2.0.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+		<!-- Hibernate Validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>8.0.0.Final</version>
+		</dependency>
+
+		<!-- CDI API (Para compatibilidade com CDI) -->
+	    <dependency>
+	        <groupId>jakarta.enterprise</groupId>
+	        <artifactId>jakarta.enterprise.cdi-api</artifactId>
+	        <version>3.0.0</version>
+	    </dependency>	
+	    
+	    <!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api -->
+		<dependency>
+		    <groupId>jakarta.platform</groupId>
+		    <artifactId>jakarta.jakartaee-api</artifactId>
+		    <version>10.0.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa -->
+		<dependency>
+		    <groupId>org.eclipse.persistence</groupId>
+		    <artifactId>org.eclipse.persistence.jpa</artifactId>
+		    <version>3.0.4</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.2.0</version>
+		</dependency>
+
+		<!-- Servlet API -->
+	    <dependency>
+	        <groupId>jakarta.servlet</groupId>
+	        <artifactId>jakarta.servlet-api</artifactId>
+	        <version>6.0.0</version>
+	    </dependency>
+	    
+	    <dependency>
+		    <groupId>jakarta.validation</groupId>
+		    <artifactId>jakarta.validation-api</artifactId>
+		    <version>3.0.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>jakarta.el</groupId>
+		    <artifactId>jakarta.el-api</artifactId>
+		    <version>5.0.1</version> <!-- Use a versão compatível com Jakarta EE 10 -->
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.glassfish/jakarta.el -->
+		<dependency>
+		    <groupId>org.glassfish</groupId>
+		    <artifactId>jakarta.el</artifactId>
+		    <version>5.0.0-M1</version>
+		</dependency>
+
+	    
+	    <!-- Weld CDI -->
+		<dependency>
+		    <groupId>org.jboss.weld.servlet</groupId>
+		    <artifactId>weld-servlet-shaded</artifactId>
+		    <version>4.0.3.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-core -->
+		<dependency>
+		    <groupId>org.jboss.weld.servlet</groupId>
+		    <artifactId>weld-servlet-core</artifactId>
+		    <version>4.0.3.Final</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet -->
+<!--		<dependency>-->
+<!--		    <groupId>org.jboss.weld.servlet</groupId>-->
+<!--		    <artifactId>weld-servlet</artifactId>-->
+<!--		    <version>2.4.8.Final</version>-->
+<!--		</dependency>-->
+
+
+		
+		<!-- SLF4J Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.36</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.36</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.omnifaces</groupId>
+		    <artifactId>omnifaces</artifactId>
+		    <version>4.3</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.eclipse</groupId>
+		    <artifactId>yasson</artifactId>
+		    <version>3.0.3</version> <!-- Ou a versão mais recente -->
+		</dependency>		
+		
+	</dependencies>
+  
+</project>
